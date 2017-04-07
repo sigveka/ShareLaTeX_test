@@ -1,0 +1,113 @@
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+% @brief   Example of using Share LaTeX
+% @author  Sigve Karolius (SK)
+% @date    2017-04-07  (started)
+% @copyright 2017 SK
+% @details
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
+% API for accessing custom meta-data
+\providecommand{\myauthor}{S.~Karolius}
+\providecommand{\myffiliation}{NTNU}
+\providecommand{\mycopyright}{SK}
+\providecommand{\mycomment}{%
+This is a short abstract outlining the scope and findings in this work.%
+}
+\providecommand{\mydate}{1.~januar~2010}
+\providecommand{\myfirstpage}{123}
+\providecommand{\myinstitution}{Dept. of Chem. Eng.,~Norwegian Univ. of Sci. and Tech.}
+\providecommand{\myjournal}{ABCD of Modelling}
+\providecommand{\mykeywords}{list, of, keywords}
+%\providecommand{\mylistings}{my-listings}%      My personal listings package
+\providecommand{\mymonth}{April}
+\providecommand{\mynumber}{1}
+%\providecommand{\mynotation}{my-glossary}% My personal glossary and notation
+\providecommand{\mytitle}{Modelling as a Core Activity}
+\providecommand{\myvolume}{XVI}
+\providecommand{\myyear}{2017}
+% --------------------------------------------------------------------------- %
+% Preamble...
+% --------------------------------------------------------------------------- %
+\documentclass{my-memoir}
+%
+%\usepackage{lettrine}
+%
+% --------------------------------------------------------------------------- %
+% Start document...
+% --------------------------------------------------------------------------- %
+%\newsavebox\ltmcbox
+\begin{document}
+%
+\maketitle
+%
+%\printglossaries
+%
+\raggedcolumns
+\begin{multicols}{2}
+%
+\tableofcontents
+%
+\mergeglossaries%         <--  Merge Greek and Lating Symbols into one glossary
+\printglossary[type=main, style=mylong2col, title=Symbols]
+\printglossary[type=\acronymtype]
+% --------------------------------------------------------------------------- %
+\section{Introduction}
+%
+Linear models\index{M!Models} can be represented as follows:
+%
+\begin{align}
+  \dot{\State} &= \matState \State + \matInput \Input 
+\end{align}
+%
+%\begin{table}[H]
+% \footnotesize
+% \caption{%
+%   Table%
+% }
+% \centering
+% \begin{tabular}{l l} \toprule
+%    a & B \\ \midrule \midrule
+%    c & d \\ \bottomrule
+% \end{tabular}
+%\end{table}
+%
+% --------------------------------------------------------------------------- %
+\section{Thermodynamics}
+%
+In thermodynamics \Gibbs is an eponym which takes its name from from \glsentrylong{Gibbs}. \Gibbs-energy is defined as:
+%
+\[
+  \Gibbs := U - TS - \NegativePressure V
+\]
+% --------------------------------------------------------------------------- %
+\section{Numerical Methods}
+%
+\begin{lstlisting}[%
+ language=python,%
+ caption={[Simple Newton Raphson]%
+ The "Newton-step" is performed in Line \ref{line:butanol}%
+ },%
+ label={lst:everest},%
+ escapeinside={<@}{@>},%
+]
+def nr(f,dfdx,x0,tol=1e-12,maxit=13):
+  """ 1D Newton-Raphson solver """
+  xk=x0; iflag=False; cflag=False; i=1
+  while not iflag:
+    <@\textcolor{red}{xkp1 = xk - f(xk)/dfdx(xk)}\label{line:butanol}@> # NR step
+    cflag = abs(xkp1 - xk) <= tol
+    if not cflag:
+        xk = xkp1; i += 1
+        iflag = i > maxit
+        continue
+    return xk
+  return xk
+\end{lstlisting}
+%
+\end{multicols}
+%
+\clearpage
+%
+\twocolindex
+\printindex
+%
+\end{document}
