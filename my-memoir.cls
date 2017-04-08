@@ -20,13 +20,11 @@
 %   ________/  \  _____|                                    |________  /  \__
 %  /            \/                                                   \/
 %
-% @brief      Definition of a "all-inclusive" article class based on memoir
+% @brief      Definition of an "all-inclusive" article class based on memoir
 % @author     Sigve Karolius (SK)
 % @date       2017-04-07 (started)
 % @copyright  2017 SK
 % @details
-%             This class produces a subset of book suitable for doctoral
-%             theses written at NTNU.
 %
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %
 \NeedsTeXFormat{LaTeX2e}%
@@ -54,13 +52,13 @@
 \providecommand{\myyear}{2010}
 \providecommand{\mymonth}{%
  \ifcase\month\or%
-	January\or%
+  January\or%
   February\or%
   March\or%
   April\or%
   May\or%
   June\or%
-	July\or%
+  July\or%
   August\or%
   September\or%
   October\or%
